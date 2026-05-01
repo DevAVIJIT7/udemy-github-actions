@@ -22,7 +22,7 @@ jobs:
         run: npm run test
   build:
     env:
-      DB_NAME: ${{ env.DEV_DB_NAME }}
+      DB_NAME: ${{ vars.DEV_DB_NAME }}
       DB_PASSWORD: ${{ secrets.DEV_DB_PASSWORD }}
     needs: test
     runs-on: ubuntu-latest
