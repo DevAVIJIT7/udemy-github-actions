@@ -21,13 +21,13 @@ jobs:
       - name: Test code
         run: npm run test
   build:
+    env:
+      DB_NAME: ${{ env.DEV_DB_NAME }}
+      DB_PASSWORD: ${{ secrets.DEV_DB_PASSWORD }}
     needs: test
     runs-on: ubuntu-latest
     outputs:
       js-filename: ${{ steps.publish-js-filename.outputs.js-filename }}
-    env:
-      DB_NAME: ${{ env.DEV_DB_NAME }}
-      DB_PASSWORD: ${{ secrets.DEV_DB_PASSWORD }}
     steps:
       - name: Get code
         uses: actions/checkout@v3
